@@ -7,6 +7,8 @@ import {
   MatDateRangeSelectionStrategy,
   MAT_DATE_RANGE_SELECTION_STRATEGY
 } from "@angular/material/datepicker";
+// https://github.com/palantir/blueprint/issues/959#issuecomment-465063930
+import moment from 'moment';
 
 /** @title Datepicker open method */
 @Component({
@@ -17,6 +19,7 @@ import {
 export class DatepickerApiExample {
   minDate: Date = new Date(2002, 7, 2);
   maxDate: Date = new Date(2022, 7, 20);
+  selected: DateRange<Date>;
 
   options = [
     'Maximum',
@@ -25,5 +28,33 @@ export class DatepickerApiExample {
     '2 Months',
     '1 Year',
     '2 Years',
-  ]
+  ];
+
+  select(index: number) {
+    let item = this.options[index];
+    const end = new Date(Date.now());
+    let start = moment();
+    switch (index) {
+      case 0:
+        start = moment("1950-01-01 0:00", "YYYY-MM-DD HH:mm");
+        break;
+      case 1:
+        start = moment().subtract(1, 'weeks');
+        break;
+      case 2:
+        start = moment().subtract(1, 'months');
+        break;
+      case 3:
+        start = moment().subtract(2, 'months');
+        break;
+      case 4:
+        start = moment().subtract(1, 'years');
+        break;
+      case 5:
+        start = moment().subtract(2, 'years');
+        break;
+    }
+      
+    this.selected = new DateRange(start.toDate(), end);
+  }
 }

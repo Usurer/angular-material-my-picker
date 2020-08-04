@@ -8,7 +8,9 @@
             <mat-list-option
               [value]="option"
               [disableRipple]="true"
-              [checkboxPosition]="before">          
+              [checkboxPosition]="before"
+              (click)="select(i)"
+              >          
               <mat-icon matListIcon *ngIf="list.selectedOptions.selected[0]?.value == option">done</mat-icon>
               {{option}}
             </mat-list-option>
@@ -19,8 +21,8 @@
       
       <mat-drawer-content>
         <mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">
-          <input matStartDate placeholder="Start date">
-          <input matEndDate placeholder="End date">
+          <input matStartDate placeholder="Start date" [value]="selected?.start">
+          <input matEndDate placeholder="End date" [value]="selected?.end">
         </mat-date-range-input>
         <app-my-picker #picker></app-my-picker>
       </mat-drawer-content>
