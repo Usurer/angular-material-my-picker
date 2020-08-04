@@ -1,0 +1,7 @@
+<mat-calendar
+  [selected]="_getSelected()"
+  [minDate]="_getMinDate()"
+  [maxDate]="_getMaxDate()"
+  [headerComponent]="header"
+  (_userSelection)="_handleUserSelection($event)">
+</mat-calendar>
