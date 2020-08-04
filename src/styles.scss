@@ -7,12 +7,16 @@ body {
 .basic-container {
   padding: 30px;
   width: 20%;
-  min-width: 400px;
+  min-width: 500px;
 }
 .version-info {
   font-size: 8pt;
   float: right;
   margin: 8px;
+}
+
+mat-drawer {
+  min-width: 170px;
 }
 
 
