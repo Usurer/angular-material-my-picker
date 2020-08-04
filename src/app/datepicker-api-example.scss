@@ -1,0 +1,8 @@
+.container-outer {
+  display: flex;
+
+  .container-left,
+  .container-right {
+    border: 1px solid black;
+  }
+}

@@ -1,11 +1,21 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <mat-list role="list">
+      <mat-list-item role="listitem">Maximum</mat-list-item>
+      <mat-list-item role="listitem">1 Week</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">1 Month</mat-list-item>
+      <mat-list-item role="listitem">2 Months</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">1 Year</mat-list-item>
+      <mat-list-item role="listitem">2 Years</mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">
+      <input matStartDate placeholder="Start date">
+      <input matEndDate placeholder="End date">
+    </mat-date-range-input>
 
-
-<mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">
-  <input matStartDate placeholder="Start date">
-  <input matEndDate placeholder="End date">
-</mat-date-range-input>
-
-<app-my-picker #picker></app-my-picker>
-<!-- Copyright 2020 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license -->
+    <app-my-picker #picker></app-my-picker></mat-drawer-content>
+</mat-drawer-container>
