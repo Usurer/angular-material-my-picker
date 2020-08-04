@@ -20,6 +20,7 @@ export class DatepickerApiExample {
   minDate: Date = new Date(2002, 7, 2);
   maxDate: Date = new Date(2022, 7, 20);
   selected: DateRange<Date>;
+  startAt: Date = new Date(Date.now());
 
   options = [
     'Maximum',
@@ -56,5 +57,6 @@ export class DatepickerApiExample {
     }
       
     this.selected = new DateRange(start.toDate(), end);
+    this.startAt = new Date(Date.now());
   }
 }

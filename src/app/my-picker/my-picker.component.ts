@@ -1,6 +1,6 @@
-import {Component, Optional, Inject, Input} from '@angular/core';
+import {Component, Optional, Inject, Input, ViewChild} from '@angular/core';
 import {DateAdapter} from '@angular/material/core';
-import { DateRange, MatCalendarUserEvent, MatDateSelectionModel, MatDateRangeSelectionStrategy, MAT_DATE_RANGE_SELECTION_STRATEGY } from '@angular/material/datepicker';
+import { DateRange, MatCalendarUserEvent, MatDateSelectionModel, MatDateRangeSelectionStrategy, MAT_DATE_RANGE_SELECTION_STRATEGY, MatCalendar } from '@angular/material/datepicker';
 import {merge, Subject, Observable, Subscription} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
 import {HeaderComponent} from './header/header.component';
@@ -24,6 +24,14 @@ export class MyPickerComponent {
   private _inputStateChanges = Subscription.EMPTY;
   readonly _stateChanges = new Subject<void>();
   header = HeaderComponent;
+
+  @Input()
+  set startAt(value: Date) {
+    if (this.calendar && value)
+      this.calendar._goToDateInView(value, 'month');
+  }
+
+  @ViewChild(MatCalendar) calendar: MatCalendar<Date>;
 
   _getSelected() {
     // @breaking-change 11.0.0 Remove null check for `_model`.

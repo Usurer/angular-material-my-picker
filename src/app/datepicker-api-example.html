@@ -24,7 +24,7 @@
           <input matStartDate placeholder="Start date" [value]="selected?.start">
           <input matEndDate placeholder="End date" [value]="selected?.end">
         </mat-date-range-input>
-        <app-my-picker #picker></app-my-picker>
+        <app-my-picker #picker [startAt]="startAt" ></app-my-picker>
       </mat-drawer-content>
     </mat-drawer-container>
   </ng-template>
