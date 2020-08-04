@@ -1,15 +1,17 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
-    <mat-list role="list">
-      <mat-list-item role="listitem">Maximum</mat-list-item>
-      <mat-list-item role="listitem">1 Week</mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item role="listitem">1 Month</mat-list-item>
-      <mat-list-item role="listitem">2 Months</mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item role="listitem">1 Year</mat-list-item>
-      <mat-list-item role="listitem">2 Years</mat-list-item>
-    </mat-list>
+    <mat-selection-list #list [multiple]="false">
+      <ng-container *ngFor="let option of options; index as i;">
+        <mat-list-option
+          [value]="option"
+          [disableRipple]="true"
+          [checkboxPosition]="before">          
+          <mat-icon matListIcon *ngIf="list.selectedOptions.selected[0]?.value == option">done</mat-icon>
+          {{option}}
+        </mat-list-option>
+        <mat-divider *ngIf="i == 1 || i == 3"></mat-divider>
+      </ng-container>
+    </mat-selection-list>
   </mat-drawer>
   <mat-drawer-content>
     <mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">

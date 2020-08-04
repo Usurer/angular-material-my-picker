@@ -17,4 +17,13 @@ import {
 export class DatepickerApiExample {
   minDate: Date = new Date(2002, 7, 2);
   maxDate: Date = new Date(2022, 7, 20);
+
+  options = [
+    'Maximum',
+    '1 Week',
+    '1 Month',
+    '2 Months',
+    '1 Year',
+    '2 Years',
+  ]
 }
