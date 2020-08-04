@@ -1,4 +1,4 @@
-import {Component, Optional, Inject, Input, ViewChild} from '@angular/core';
+import {Component, Optional, Inject, Input, Output, ViewChild, EventEmitter} from '@angular/core';
 import {DateAdapter} from '@angular/material/core';
 import { DateRange, MatCalendarUserEvent, MatDateSelectionModel, MatDateRangeSelectionStrategy, MAT_DATE_RANGE_SELECTION_STRATEGY, MatCalendar } from '@angular/material/datepicker';
 import {merge, Subject, Observable, Subscription} from 'rxjs';
@@ -32,6 +32,9 @@ export class MyPickerComponent {
   }
 
   @ViewChild(MatCalendar) calendar: MatCalendar<Date>;
+
+  @Output()
+  selectionChanged = new EventEmitter<void>();
 
   _getSelected() {
     // @breaking-change 11.0.0 Remove null check for `_model`.
@@ -69,6 +72,8 @@ export class MyPickerComponent {
                 !this._dateAdapter.sameDate(value, selection as unknown as DateRange<Date>))) {
         this._model.add(value);
       }
+
+      this.selectionChanged.emit();
     }
   }
 

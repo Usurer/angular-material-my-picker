@@ -1,4 +1,4 @@
-import { Component, Optional, Inject } from "@angular/core";
+import { Component, Optional, Inject, ViewChild } from "@angular/core";
 import { DateAdapter } from "@angular/material/core";
 import {
   DateRange,
@@ -9,6 +9,7 @@ import {
 } from "@angular/material/datepicker";
 // https://github.com/palantir/blueprint/issues/959#issuecomment-465063930
 import moment from 'moment';
+import { MatSelectionList } from "@angular/material/list";
 
 /** @title Datepicker open method */
 @Component({
@@ -21,6 +22,8 @@ export class DatepickerApiExample {
   maxDate: Date = new Date(2022, 7, 20);
   selected: DateRange<Date>;
   startAt: Date = new Date(Date.now());
+
+  @ViewChild(MatSelectionList) selectionList: MatSelectionList;
 
   options = [
     'Maximum',
@@ -58,5 +61,11 @@ export class DatepickerApiExample {
       
     this.selected = new DateRange(start.toDate(), end);
     this.startAt = new Date(Date.now());
+  }
+
+  selectionChanged(): void {
+    if (this.selectionList) {
+      this.selectionList.deselectAll();
+    }
   }
 }
