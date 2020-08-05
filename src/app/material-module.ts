@@ -43,7 +43,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {MAT_RANGE_DATE_SELECTION_MODEL_PROVIDER} from '@angular/material/datepicker';
-// import {MatMomentDateModule, MAT_MOMENT_DATE_FORMATS,} from '@angular/material-moment-adapter';
+import {MatMomentDateModule, MAT_MOMENT_DATE_FORMATS,} from '@angular/material-moment-adapter';
 
 @NgModule({
   providers: [
@@ -74,7 +74,6 @@ import {MAT_RANGE_DATE_SELECTION_MODEL_PROVIDER} from '@angular/material/datepic
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    MatNativeDateModule,
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
@@ -94,8 +93,7 @@ import {MAT_RANGE_DATE_SELECTION_MODEL_PROVIDER} from '@angular/material/datepic
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    MatNativeDateModule
-    // MatMomentDateModule
+    MatMomentDateModule
   ]
 })
 export class DemoMaterialModule {}

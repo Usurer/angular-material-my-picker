@@ -12,9 +12,11 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 import {DatepickerApiExample} from './app/datepicker-api-example';
 import { MyPickerComponent } from './app/my-picker/my-picker.component';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material/core';
 import { HeaderComponent } from './app/my-picker/header/header.component';
+import 'moment/min/locales';
+
 
 // Default MatFormField appearance to 'fill' as that is the new recommended approach and the
 // `legacy` and `standard` appearances are scheduled for deprecation in version 10.
@@ -33,7 +35,7 @@ import { HeaderComponent } from './app/my-picker/header/header.component';
   bootstrap: [DatepickerApiExample],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
-    { provide: DateAdapter, useClass: NativeDateAdapter }
+    { provide: DateAdapter, useClass: MomentDateAdapter }
   ]
 })
 export class AppModule {
