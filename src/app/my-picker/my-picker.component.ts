@@ -17,7 +17,9 @@ export class MyPickerComponent {
     private _dateAdapter: DateAdapter<DateRange<Date>>,
     @Optional() @Inject(MAT_DATE_RANGE_SELECTION_STRATEGY) private _rangeSelectionStrategy?: MatDateRangeSelectionStrategy<Date | DateRange<Date>>
   ){
-    _dateAdapter.setLocale('ru-RU');
+    const LOCALE = 'ru';
+    console.log(LOCALE);
+    _dateAdapter.setLocale(LOCALE);
   }
 
   _datepickerInput: any;
