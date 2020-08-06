@@ -5,7 +5,8 @@ import {
   MatCalendarUserEvent,
   MatDateSelectionModel,
   MatDateRangeSelectionStrategy,
-  MAT_DATE_RANGE_SELECTION_STRATEGY
+  MAT_DATE_RANGE_SELECTION_STRATEGY,
+MatStartDate, MatEndDate, MatDateRangeInput
 } from "@angular/material/datepicker";
 // https://github.com/palantir/blueprint/issues/959#issuecomment-465063930
 import moment from 'moment';
@@ -20,10 +21,13 @@ import { MatSelectionList } from "@angular/material/list";
 export class DatepickerApiExample {
   minDate: Date = new Date(2002, 7, 2);
   maxDate: Date = new Date(2022, 7, 20);
-  selected: DateRange<Date>;
-  startAt: Date = new Date(Date.now());
+  
+  startAt: moment.Moment = moment(new Date(2020, 7, 10));
 
   @ViewChild(MatSelectionList) selectionList: MatSelectionList;
+  @ViewChild(MatStartDate) startDate: MatStartDate<any>;
+  @ViewChild(MatEndDate) endDate: MatEndDate<any>;
+  @ViewChild(MatDateRangeInput) dateRangeInput: MatDateRangeInput<any>;
 
   options = [
     'Maximum',
@@ -59,8 +63,14 @@ export class DatepickerApiExample {
         break;
     }
       
-    this.selected = new DateRange(start.toDate(), end);
-    this.startAt = new Date(Date.now());
+    this.startAt = moment();
+    if (this.startDate) {
+      this.startDate.value = start.toDate();
+      this.endDate.value = end;
+    }
+
+    if (this.dateRangeInput) {
+    }
   }
 
   selectionChanged(): void {

@@ -21,8 +21,8 @@
       
       <mat-drawer-content>
         <mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">
-          <input matStartDate placeholder="Start date" [value]="selected?.start">
-          <input matEndDate placeholder="End date" [value]="selected?.end">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date" >
         </mat-date-range-input>
         <app-my-picker #picker [startAt]="startAt" (selectionChanged)="selectionChanged($event)" ></app-my-picker>
       </mat-drawer-content>

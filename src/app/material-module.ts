@@ -93,7 +93,8 @@ import {MatMomentDateModule, MAT_MOMENT_DATE_FORMATS,} from '@angular/material-m
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    // MatNativeDateModule
   ]
 })
 export class DemoMaterialModule {}
