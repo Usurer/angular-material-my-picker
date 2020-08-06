@@ -21,7 +21,7 @@ import { MatSelectionList } from "@angular/material/list";
 export class DatepickerApiExample {
   minDate: Date = new Date(2002, 7, 2);
   maxDate: Date = new Date(2022, 7, 20);
-  
+  selected: DateRange<Date>;
   startAt: moment.Moment = moment(new Date(2020, 7, 10));
 
   @ViewChild(MatSelectionList) selectionList: MatSelectionList;
@@ -63,14 +63,7 @@ export class DatepickerApiExample {
         break;
     }
       
-    this.startAt = moment();
-    if (this.startDate) {
-      this.startDate.value = start.toDate();
-      this.endDate.value = end;
-    }
-
-    if (this.dateRangeInput) {
-    }
+    this.selected = new DateRange(start.toDate(), end);
   }
 
   selectionChanged(): void {
